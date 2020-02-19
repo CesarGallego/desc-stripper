@@ -7,8 +7,7 @@ import en_core_web_sm
 nlp = en_core_web_sm.load()
 
 for line in sys.stdin:
-    parts = json.loads(line)
-    doc = nlp(parts[1])
+    json_line = json.loads(line)
+    doc = nlp(json_line)
     clean = [X.text for X in doc.ents]
-    parts[1] = clean
-    print(json.dumps(parts))
+    print(json.dumps(clean))
